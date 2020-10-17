@@ -6,7 +6,7 @@ namespace AddressBookSystem
 {
     class AddressBook
     {
-        public static List<Contact> People;
+        public List<Contact> People;
         public AddressBook()
         {
             People = new List<Contact>();
