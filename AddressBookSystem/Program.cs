@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AddressBookSystem
 {
@@ -18,7 +19,7 @@ namespace AddressBookSystem
                 int loop = 1;
                 while (loop == 1)
                 {
-                    Console.WriteLine("\nSelect the option. \n1. Add new contact. \n2. Edit existing contact.\n3. Delete Contact \n4. Exit.");
+                    Console.WriteLine("\nSelect the option. \n1. Add new contact. \n2. Edit existing contact.\n3. Delete Contact \n4. Search By City \n5. Exit.");
                     int option = int.Parse(Console.ReadLine());
                     switch (option)
                     {
@@ -92,6 +93,14 @@ namespace AddressBookSystem
                                 break;
                             }
                         case 4:
+                            Console.WriteLine("Enter city whose contacts need to be searched");
+                            string city = Console.ReadLine();
+                            foreach (Contact contact in binder.SearchContactsByCity(city))
+                            {
+                                Console.WriteLine(contact.FirstName + "\t" + contact.LastName + "\t" + contact.Address + "\t" + contact.City + "\t" + contact.State + "\t" + contact.ZipCode + "\t" + contact.PhoneNumber + "\t" + contact.Email);
+                            }
+                            break;
+                        case 5:
                             loop = 0;
                             break;
                     }
