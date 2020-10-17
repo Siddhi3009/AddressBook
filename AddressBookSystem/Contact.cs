@@ -11,10 +11,10 @@ namespace AddressBookSystem
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int ZipCode { get; set; }
-        public int PhoneNumber { get; set; }
+        public string ZipCode { get; set; }
+        public string PhoneNumber { get; set; }
         public string Email { get; set; }
-        public Contact(string FirstName, string LastName, string Address, string City, string State, int ZipCode, int PhoneNumber, string Email)
+        public Contact(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNumber, string Email)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
