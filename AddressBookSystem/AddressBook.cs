@@ -6,14 +6,22 @@ namespace AddressBookSystem
 {
     class AddressBook
     {
-        public List<Contact> People;
+        public HashSet<Contact> People;
         public AddressBook()
         {
-            People = new List<Contact>();
+            People = new HashSet<Contact>();
         }
         public Contact FindContact(string fname)
         {
-            Contact contact = People.Find((person) => person.FirstName == fname);
+            Contact contact = null;
+            foreach (var person in People)
+            {
+                if (person.FirstName.Equals(fname))
+                {
+                    contact = person;
+                    break;
+                }
+            }
             return contact;
         }
         public bool AddContact(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNumber, string Email)

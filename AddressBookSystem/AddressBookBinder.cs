@@ -6,8 +6,8 @@ namespace AddressBookSystem
 {
     class AddressBookBinder
     {
-        public Dictionary<string, List<Contact>> Binder = new Dictionary<string, List<Contact>>();
-        public List<Contact> AddAddrBook(string key, List<Contact> list)
+        public Dictionary<string, HashSet<Contact>> Binder = new Dictionary<string, HashSet<Contact>>();
+        public HashSet<Contact> AddAddrBook(string key, HashSet<Contact> set)
         {
             if (this.Binder.ContainsKey(key))
             {
@@ -17,7 +17,7 @@ namespace AddressBookSystem
             else
             {
                 Console.WriteLine("New address book created");
-                Binder.Add(key, list);
+                Binder.Add(key, set);
                 return Binder[key];
             }
         }
