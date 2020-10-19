@@ -94,6 +94,7 @@ namespace AddressBookSystem
                                 break;
                             }
                         case 4:
+                            binder.CreateDictionary();
                             Console.WriteLine("Enter city whose contacts need to be searched");
                             string city = Console.ReadLine();
                             foreach (Contact contact in binder.CityDictionary[city])
@@ -102,6 +103,7 @@ namespace AddressBookSystem
                             }
                             break;
                         case 5:
+                            binder.CreateDictionary();
                             foreach (var key in binder.CityDictionary.Keys)
                             {
                                     Console.WriteLine(key + "\t" + binder.CityDictionary[key].Count);
@@ -112,7 +114,6 @@ namespace AddressBookSystem
                             break;
                     }
                     binder.Binder[addrName] = (book.People);
-                    binder.CreateDictionary();
                 }
                 Console.WriteLine("Do you want to enter an address book. \n1. yes \n2. no");
                 result = int.Parse(Console.ReadLine());
