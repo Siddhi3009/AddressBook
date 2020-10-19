@@ -30,7 +30,7 @@ namespace AddressBookSystem
                 foreach (Contact c in Binder[key])
                 {
                     if (City.Contains(c.City))
-                        break;
+                        continue;
                     else
                         City.Add(c.City);
                 }
