@@ -50,5 +50,19 @@ namespace AddressBookSystem
                 return false;
             }
         }
+        public void AlphabeticallyArrange()
+        {
+            List<string> alphabeticalList = new List<string>();
+            foreach (Contact c in People)
+            {
+                string sort = c.ToString();
+                alphabeticalList.Add(sort);
+            }
+            alphabeticalList.Sort();
+            foreach (string s in alphabeticalList)
+            {
+                Console.WriteLine(s);
+            }
+        }
     }
 }

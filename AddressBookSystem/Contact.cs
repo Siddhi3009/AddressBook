@@ -25,5 +25,9 @@ namespace AddressBookSystem
             this.PhoneNumber = PhoneNumber;
             this.Email = Email;
         }
+        public override string ToString()
+        {
+            return FirstName + "\t" + LastName + "\t" + Address + "\t" + City + "\t" + State + "\t" + ZipCode + "\t" + PhoneNumber + "\t" + Email;
+        }
     }
 }
