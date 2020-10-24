@@ -6,9 +6,9 @@ namespace AddressBookSystem
 {
     class AddressBookBinder
     {
-        public Dictionary<string, HashSet<Contact>> Binder = new Dictionary<string, HashSet<Contact>>();
+        public Dictionary<string, List<Contact>> Binder = new Dictionary<string, List<Contact>>();
         public Dictionary<string, List<Contact>> CityDictionary = new Dictionary<string, List<Contact>>();
-        public HashSet<Contact> AddAddrBook(string key, HashSet<Contact> set)
+        public List<Contact> AddAddrBook(string key, List<Contact> set)
         {
             if (this.Binder.ContainsKey(key))
             {
