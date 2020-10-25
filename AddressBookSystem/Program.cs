@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace AddressBookSystem
 {
     class Program
     {
+        public static List<string> data = new List<string>();
         static void Main(string[] args)
         {
             AddressBookBinder binder = new AddressBookBinder();
@@ -132,12 +134,55 @@ namespace AddressBookSystem
             }
             foreach (var key in binder.Binder.Keys)
             {
-                Console.WriteLine(key);
+                data.Add(key);
                 foreach (Contact c in binder.Binder[key])
                 {
-                    Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.Address + "\t" + c.City + "\t" + c.State + "\t" + c.ZipCode + "\t" + c.PhoneNumber + "\t" + c.Email);
+                    data.Add(c.ToString());
                 }
             }
+            Console.WriteLine("Writing contacts in file");
+            WriteUsingStreamWriter();
+            ReadFromStreamReader();
         }
+        //FileIO Operations
+        public static void ReadFromStreamReader()
+        {
+            string path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contacts.txt";
+            if (File.Exists(path))
+            {
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    String fileData = "";
+                    while ((fileData = sr.ReadLine()) != null)
+                        Console.WriteLine((fileData));
+                }
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("No file");
+            }
+        }
+        public static void WriteUsingStreamWriter()
+        {
+            string path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contacts.txt";
+            if (File.Exists(path))
+            {
+                using (StreamWriter streamWriter = File.AppendText(path))
+                {
+                    foreach (string contact in data)
+                    {
+                        streamWriter.WriteLine(contact);
+                    }
+                    streamWriter.Close();
+                }
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("No file");
+            }
+        }
+
     }
 }
