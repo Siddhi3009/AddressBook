@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 home
 ss	ss	ss	ss	ss	ss	ss	ss
 dd	dd	dd	dd	d	d	dd	dd
@@ -12,3 +13,5 @@ Home
 kk	kk	kk	kk	kk	k	k	kk
 office
 ww	ww	ww	ww	ww	ww	ww	ww
+=======
+>>>>>>> e421a9c34fbc46321ed713067aae80c42f13dffd

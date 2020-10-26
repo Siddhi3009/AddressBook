@@ -143,10 +143,9 @@ namespace AddressBookSystem
                 }
             }
             Console.WriteLine("Writing contacts in file");
-            WriteUsingStreamWriter();
-            ReadFromStreamReader();
 
-            //CSV READ WRITE 
+            ReadWrite.WriteUsingStreamWriter(data);
+            ReadWrite.ReadFromStreamReader();
             foreach (var key in binder.Binder.Keys)
             {
                 foreach (Contact c in binder.Binder[key])
@@ -158,46 +157,6 @@ namespace AddressBookSystem
             var path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contact.csv";
             var resultData = CSVReadWrite.ReadCSVFile(path);
         }
-        //FileIO Operations
-        public static void ReadFromStreamReader()
-        {
-            string path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contacts.txt";
-            if (File.Exists(path))
-            {
-                using (StreamReader sr = File.OpenText(path))
-                {
-                    String fileData = "";
-                    while ((fileData = sr.ReadLine()) != null)
-                        Console.WriteLine((fileData));
-                }
-                Console.ReadKey();
-            }
-            else
-            {
-                Console.WriteLine("No file");
-            }
-        }
-        public static void WriteUsingStreamWriter()
-        {
-            string path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contacts.txt";
-            if (File.Exists(path))
-            {
-                using (StreamWriter streamWriter = File.AppendText(path))
-                {
-                    foreach (string contact in data)
-                    {
-                        streamWriter.WriteLine(contact);
-                    }
-                    streamWriter.Close();
-                }
-                Console.ReadKey();
-            }
-            else
-            {
-                Console.WriteLine("No file");
-            }
-        }
-      
     }
 }
 
