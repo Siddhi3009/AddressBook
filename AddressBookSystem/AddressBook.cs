@@ -71,7 +71,6 @@ namespace AddressBookSystem
             {
                 Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.Address + "\t" + c.City + "\t" + c.State + "\t" + c.ZipCode + "\t" + c.PhoneNumber + "\t" + c.Email);
             }
-
         }
         public void SortByCity()
         {

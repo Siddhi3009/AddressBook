@@ -1,5 +1,0 @@
-home
-ss	ss	ss	ss	ss	ss	ss	ss
-dd	dd	dd	dd	d	d	dd	dd
-office
-rr	tt	tt	tt	tt	tt	tt	tt

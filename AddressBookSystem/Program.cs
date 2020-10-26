@@ -141,48 +141,8 @@ namespace AddressBookSystem
                 }
             }
             Console.WriteLine("Writing contacts in file");
-            WriteUsingStreamWriter();
-            ReadFromStreamReader();
+            ReadWrite.WriteUsingStreamWriter(data);
+            ReadWrite.ReadFromStreamReader();
         }
-        //FileIO Operations
-        public static void ReadFromStreamReader()
-        {
-            string path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contacts.txt";
-            if (File.Exists(path))
-            {
-                using (StreamReader sr = File.OpenText(path))
-                {
-                    String fileData = "";
-                    while ((fileData = sr.ReadLine()) != null)
-                        Console.WriteLine((fileData));
-                }
-                Console.ReadKey();
-            }
-            else
-            {
-                Console.WriteLine("No file");
-            }
-        }
-        public static void WriteUsingStreamWriter()
-        {
-            string path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contacts.txt";
-            if (File.Exists(path))
-            {
-                using (StreamWriter streamWriter = File.AppendText(path))
-                {
-                    foreach (string contact in data)
-                    {
-                        streamWriter.WriteLine(contact);
-                    }
-                    streamWriter.Close();
-                }
-                Console.ReadKey();
-            }
-            else
-            {
-                Console.WriteLine("No file");
-            }
-        }
-
     }
 }
