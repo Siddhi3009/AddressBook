@@ -1,13 +1,15 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Text;
 namespace AddressBookSystem
 {
     class Program
     {
         public static List<string> data = new List<string>();
+        public static List<Contact> data1 = new List<Contact>();
         static void Main(string[] args)
         {
             AddressBookBinder binder = new AddressBookBinder();
@@ -108,7 +110,7 @@ namespace AddressBookSystem
                             binder.CreateDictionary();
                             foreach (var key in binder.CityDictionary.Keys)
                             {
-                                    Console.WriteLine(key + "\t" + binder.CityDictionary[key].Count);
+                                Console.WriteLine(key + "\t" + binder.CityDictionary[key].Count);
                             }
                             break;
                         case 6:
@@ -143,6 +145,18 @@ namespace AddressBookSystem
             Console.WriteLine("Writing contacts in file");
             WriteUsingStreamWriter();
             ReadFromStreamReader();
+
+            //CSV READ WRITE 
+            foreach (var key in binder.Binder.Keys)
+            {
+                foreach (Contact c in binder.Binder[key])
+                {
+                    data1.Add(c);
+                }
+            }
+            CSVReadWrite.WriteCSVFile(@"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contact.csv", data1);
+            var path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contact.csv";
+            var resultData = CSVReadWrite.ReadCSVFile(path);
         }
         //FileIO Operations
         public static void ReadFromStreamReader()
@@ -183,6 +197,7 @@ namespace AddressBookSystem
                 Console.WriteLine("No file");
             }
         }
-
+      
     }
 }
+
