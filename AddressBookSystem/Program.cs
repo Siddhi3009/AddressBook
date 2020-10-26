@@ -8,7 +8,6 @@ namespace AddressBookSystem
 {
     class Program
     {
-        public static List<string> data = new List<string>();
         public static List<Contact> data1 = new List<Contact>();
         static void Main(string[] args)
         {
@@ -136,26 +135,16 @@ namespace AddressBookSystem
             }
             foreach (var key in binder.Binder.Keys)
             {
-                data.Add(key);
-                foreach (Contact c in binder.Binder[key])
-                {
-                    data.Add(c.ToString());
-                }
-            }
-            Console.WriteLine("Writing contacts in file");
-
-            ReadWrite.WriteUsingStreamWriter(data);
-            ReadWrite.ReadFromStreamReader();
-            foreach (var key in binder.Binder.Keys)
-            {
                 foreach (Contact c in binder.Binder[key])
                 {
                     data1.Add(c);
                 }
             }
-            CSVReadWrite.WriteCSVFile(@"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contact.csv", data1);
-            var path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Contact.csv";
-            var resultData = CSVReadWrite.ReadCSVFile(path);
+            Console.WriteLine("Writing contacts in file");
+            ReadWrite.WriteUsingStreamWriter(data1);
+            ReadWrite.ReadFromStreamReader();
+            ReadWrite.ImplementCSVDataHandling();
+            ReadWrite.WriteCSVFile(data1);
         }
     }
 }
