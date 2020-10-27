@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AddressBookSystem
+﻿namespace AddressBookSystem
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
     class AddressBookBinder
     {
+        //Address books store with address book name as key
         public Dictionary<string, List<Contact>> Binder = new Dictionary<string, List<Contact>>();
+        //Dictionary of contacts seggregated citywise
         public Dictionary<string, List<Contact>> CityDictionary = new Dictionary<string, List<Contact>>();
+        //Creating Different AddressBooks
         public List<Contact> AddAddrBook(string key, List<Contact> set)
         {
             if (this.Binder.ContainsKey(key))
@@ -22,25 +24,27 @@ namespace AddressBookSystem
                 return Binder[key];
             }
         }
+        //List of different cities whose contact exists is created
         public List<string> DistinctCities()
         {
-            List<string> City = new List<string>();
+            List<string> city = new List<string>();
             foreach (var key in Binder.Keys)
             {
                 foreach (Contact c in Binder[key])
                 {
-                    if (City.Contains(c.City))
+                    if (city.Contains(c.City))
                         continue;
                     else
-                        City.Add(c.City);
+                        city.Add(c.City);
                 }
             }
-            return City;
+            return city;
         }
+        //Creating Dictionary with city as a key
         public void CreateDictionary()
         {
-            List<string> City1 = DistinctCities();
-            foreach (string city in City1)
+            List<string> City = DistinctCities();
+            foreach (string city in City)
             {        
                 List<Contact> CityContact = new List<Contact>();
                 foreach (var key in Binder.Keys)
