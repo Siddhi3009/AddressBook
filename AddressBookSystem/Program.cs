@@ -147,9 +147,12 @@
             //ReadWrite.WriteUsingStreamWriter(data);
             //ReadWrite.ReadFromStreamReader();
             //CSV File operations
-            Console.WriteLine("Writing contacts in csv file");
-            ReadWrite.WriteCSVFile(data);
-            ReadWrite.ReadCSVFile();
+            //Console.WriteLine("Writing contacts in csv file");
+            //ReadWrite.WriteCSVFile(data);
+            //ReadWrite.ReadCSVFile();
+            //JSON File operations
+            ReadWrite.WriteToJsonFile(data);
+            ReadWrite.ReadJsonFile();
         }
     }
 }
