@@ -42,6 +42,7 @@
             {
                 using (StreamWriter streamWriter = File.AppendText(path))
                 {
+                    _ = streamWriter.NewLine;
                     foreach (Contact contact in data)
                     {
                         streamWriter.WriteLine(contact.FirstName + "\t" + contact.LastName + "\t" + contact.Address + "\t" + contact.City + "\t" + contact.State + "\t" + contact.ZipCode + "\t" + contact.PhoneNumber + "\t" + contact.Email);

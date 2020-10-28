@@ -44,44 +44,13 @@
                             string PhoneNumber = Console.ReadLine();
                             Console.WriteLine("Email");
                             string Email = Console.ReadLine();
-                            if (book.AddContact(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email))
-                            {
-                                Console.WriteLine("Contact added successfully");
-                                break;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Contact already exists");
-                                break;
-                            }
+                            book.AddContact(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email);
+                            break;
                         case 2:
                             Console.WriteLine("Enter the first name of the contact to be edited ");
                             string name = Console.ReadLine();
-                            Contact c = book.FindContact(name);
-                            if (c == null)
-                            {
-                                Console.WriteLine("Address for {0} count not be found.", name);
-                                break;
-                            }
-                            else
-                            {
-                                Console.WriteLine("New Last Name");
-                                c.LastName = Console.ReadLine();
-                                Console.WriteLine("New Address");
-                                c.Address = Console.ReadLine();
-                                Console.WriteLine("New City");
-                                c.City = Console.ReadLine();
-                                Console.WriteLine("New State");
-                                c.State = Console.ReadLine();
-                                Console.WriteLine("New Zip code");
-                                c.ZipCode = Console.ReadLine();
-                                Console.WriteLine("New Phone Number");
-                                c.PhoneNumber = Console.ReadLine();
-                                Console.WriteLine("New Email");
-                                c.Email = Console.ReadLine();
-                                Console.WriteLine("Details updated for " + name);
-                                break;
-                            }
+                            book.EditContact(name);
+                            break;
                         case 3:
                             Console.WriteLine("Enter the first name of the contact to be deleted ");
                             string name1 = Console.ReadLine();

@@ -1,7 +1,9 @@
 ﻿namespace AddressBookSystem
 {
+    using Microsoft.VisualBasic.FileIO;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Text;
     class AddressBook
     {
@@ -33,7 +35,7 @@
             return contact;
         }
         /// <summary>
-        /// Adds a contact to the address book
+        /// Adds a valid contact to the address book
         /// </summary>
         /// <param name="FirstName"></param>
         /// <param name="LastName"></param>
@@ -43,18 +45,70 @@
         /// <param name="ZipCode"></param>
         /// <param name="PhoneNumber"></param>
         /// <param name="Email"></param>
-        /// <returns>true: contact added successfully, false: contact already exists</returns>
-        public bool AddContact(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNumber, string Email)
+        public void AddContact(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNumber, string Email)
         {
-            Contact contact = new Contact(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email);
-            Contact result = FindContact(FirstName);
-            if (result == null)
+            RegexValidation validate = new RegexValidation();
+            if (validate.Validate(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email))
             {
-                People.Add(contact);
-                return true;
+                Contact contact = new Contact(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email);
+                Contact result = FindContact(FirstName);
+                if (result == null)
+                {
+                    People.Add(contact);
+                    Console.WriteLine("Contact added successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Contact already exists");
+                }
             }
             else
-                return false;
+            {
+                Console.WriteLine("Enter a valid contact");
+            }
+        }
+        /// <summary>
+        /// Edits already existing contact based on first name
+        /// </summary>
+        /// <param name="firstName"></param>
+        public void EditContact(string firstName)
+        {
+            Contact contactToBeEdited = FindContact(firstName);
+            Contact contact = new Contact();
+            RegexValidation validate = new RegexValidation();
+            if (contactToBeEdited == null)
+            {
+                Console.WriteLine("Address for {0} could not be found.", firstName);
+            }
+            else
+            {
+                Console.WriteLine("New First Name");
+                contact.FirstName = Console.ReadLine();
+                Console.WriteLine("New Last Name");
+                contact.LastName = Console.ReadLine();
+                Console.WriteLine("New Address");
+                contact.Address = Console.ReadLine();
+                Console.WriteLine("New City");
+                contact.City = Console.ReadLine();
+                Console.WriteLine("New State");
+                contact.State = Console.ReadLine();
+                Console.WriteLine("New Zip code");
+                contact.ZipCode = Console.ReadLine();
+                Console.WriteLine("New Phone Number");
+                contact.PhoneNumber = Console.ReadLine();
+                Console.WriteLine("New Email");
+                contact.Email = Console.ReadLine();
+                if (validate.Validate(contact.FirstName, contact.LastName, contact.Address, contact.City, contact.State, contact.ZipCode, contact.PhoneNumber, contact.Email))
+                {
+                    People.Remove(contactToBeEdited);
+                    People.Add(contact);
+                    Console.WriteLine("Details updated for " + firstName);
+                }
+                else
+                {
+                    Console.WriteLine("Enter valid details");
+                }
+            }
         }
         /// <summary>
         /// Removes a contact from the address book
