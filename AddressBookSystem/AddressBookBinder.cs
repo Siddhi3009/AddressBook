@@ -9,7 +9,12 @@
         public Dictionary<string, List<Contact>> Binder = new Dictionary<string, List<Contact>>();
         //Dictionary of contacts seggregated citywise
         public Dictionary<string, List<Contact>> CityDictionary = new Dictionary<string, List<Contact>>();
-        //Creating Different AddressBooks
+        /// <summary>
+        /// Add address book to dictionary or updates existing one if already added
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="set"></param>
+        /// <returns></returns>
         public List<Contact> AddAddrBook(string key, List<Contact> set)
         {
             if (this.Binder.ContainsKey(key))
@@ -24,7 +29,10 @@
                 return Binder[key];
             }
         }
-        //List of different cities whose contact exists is created
+        /// <summary>
+        /// Creates List of different cities whose contact exists
+        /// </summary>
+        /// <returns>List of different cities in address books</returns>
         public List<string> DistinctCities()
         {
             List<string> city = new List<string>();
@@ -40,8 +48,10 @@
             }
             return city;
         }
-        //Creating Dictionary with city as a key
-        public void CreateDictionary()
+        /// <summary>
+        ///  Creates Dictionary with city as a key
+        /// </summary>
+        public void CreateCityDictionary()
         {
             List<string> City = DistinctCities();
             foreach (string city in City)

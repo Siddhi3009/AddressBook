@@ -8,8 +8,6 @@
     using System.Text;
     class Program
     {
-        //List to store contacts added in every address book
-        public static List<Contact> data = new List<Contact>();
         static void Main(string[] args)
         {
             AddressBookBinder binder = new AddressBookBinder();
@@ -24,7 +22,7 @@
                 int loop = 1;
                 while (loop == 1)
                 {
-                    Console.WriteLine("\nSelect the option. \n1. Add new contact. \n2. Edit existing contact.\n3. Delete Contact \n4. Search By City \n5. Count citywise contacts \n6. Display Alphabetically \n7. Sort By Zipcode \n8. Sort By City \n9. Sort By State \n10. Exit.");
+                    Console.WriteLine("\nSelect the option. \n1. Add new contact. \n2. Edit existing contact.\n3. Delete Contact \n4. Search By City \n5. Count citywise contacts \n6. Display Alphabetically \n7. Sort By Zipcode \n8. Sort By City \n9. Sort By State \n10. Read the contacts from txt file \n11. Write the contacts in txt file \n12. Read the contacts from csv file \n13. Write the contacts in csv file \n14. Read the contacts from json file \n15. Write the contacts in json file \n16. Exit. ");
                     int option = int.Parse(Console.ReadLine());
                     switch (option)
                     {
@@ -98,7 +96,7 @@
                                 break;
                             }
                         case 4:
-                            binder.CreateDictionary();
+                            binder.CreateCityDictionary();
                             Console.WriteLine("Enter city whose contacts need to be searched");
                             string city = Console.ReadLine();
                             foreach (Contact contact in binder.CityDictionary[city])
@@ -107,7 +105,7 @@
                             }
                             break;
                         case 5:
-                            binder.CreateDictionary();
+                            binder.CreateCityDictionary();
                             foreach (var key in binder.CityDictionary.Keys)
                             {
                                 Console.WriteLine(key + "\t" + binder.CityDictionary[key].Count);
@@ -126,6 +124,30 @@
                             book.SortByState();
                             break;
                         case 10:
+                            Console.WriteLine("Reading contacts from txt file");
+                            ReadWrite.ReadFromStreamReader();
+                            break;
+                        case 11:
+                            Console.WriteLine("Writing contacts in txt file");
+                            ReadWrite.WriteUsingStreamWriter(book.People);
+                            break;
+                        case 12:
+                            Console.WriteLine("Reading contacts from csv file");
+                            ReadWrite.ReadCSVFile();
+                            break;
+                        case 13:
+                            Console.WriteLine("Writing contacts in csv file");
+                            ReadWrite.WriteCSVFile(book.People);
+                            break;
+                        case 14:
+                            Console.WriteLine("Reading contacts from json file");
+                            ReadWrite.ReadJsonFile();
+                            break;
+                        case 15:
+                            Console.WriteLine("Writing contacts in json file");
+                            ReadWrite.WriteToJsonFile(book.People);
+                            break;
+                        case 16:
                             loop = 0;
                             break;
                     }
@@ -134,25 +156,6 @@
                 Console.WriteLine("Do you want to enter an address book. \n1. yes \n2. no");
                 result = int.Parse(Console.ReadLine());
             }
-            //Storing contacts added in adress books to data list
-            foreach (var key in binder.Binder.Keys)
-            {
-                foreach (Contact c in binder.Binder[key])
-                {
-                    data.Add(c);
-                }
-            }
-            //Txt file operations
-            //Console.WriteLine("Writing contacts in txt file");
-            //ReadWrite.WriteUsingStreamWriter(data);
-            //ReadWrite.ReadFromStreamReader();
-            //CSV File operations
-            //Console.WriteLine("Writing contacts in csv file");
-            //ReadWrite.WriteCSVFile(data);
-            //ReadWrite.ReadCSVFile();
-            //JSON File operations
-            ReadWrite.WriteToJsonFile(data);
-            ReadWrite.ReadJsonFile();
         }
     }
 }

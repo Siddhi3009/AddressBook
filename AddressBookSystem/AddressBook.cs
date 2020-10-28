@@ -7,12 +7,18 @@
     {
         //AddressBook: List of contacts on which operations will be performed
         public List<Contact> People;
-        //Constructor for initializing new Address book
+        /// <summary>
+        /// Constructor for initializing new Address book
+        /// </summary>
         public AddressBook()
         {
             People = new List<Contact>();
         }
-        //Finding a contact with its first name
+        /// <summary>
+        /// Finding a contact with its first name
+        /// </summary>
+        /// <param name="fname"></param>
+        /// <returns>Contact with same firstname if found, null if no contact found</returns>
         public Contact FindContact(string fname)
         {
             Contact contact = null;
@@ -26,7 +32,18 @@
             }
             return contact;
         }
-        //Adding a contact to the address book
+        /// <summary>
+        /// Adds a contact to the address book
+        /// </summary>
+        /// <param name="FirstName"></param>
+        /// <param name="LastName"></param>
+        /// <param name="Address"></param>
+        /// <param name="City"></param>
+        /// <param name="State"></param>
+        /// <param name="ZipCode"></param>
+        /// <param name="PhoneNumber"></param>
+        /// <param name="Email"></param>
+        /// <returns>true: contact added successfully, false: contact already exists</returns>
         public bool AddContact(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNumber, string Email)
         {
             Contact contact = new Contact(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email);
@@ -39,7 +56,11 @@
             else
                 return false;
         }
-        //Removing a contact from the address book
+        /// <summary>
+        /// Removes a contact from the address book
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>true if contact is removed, false if contact cannot be removed</returns>
         public bool RemoveContact(string name)
         {
             Contact c = FindContact(name);
@@ -54,7 +75,9 @@
                 return false;
             }
         }
-        //Arranging the contacts in an address book alphabetically
+        /// <summary>
+        ///  Arranges the contacts in an address book alphabetically
+        /// </summary>
         public void AlphabeticallyArrange()
         {
             List<string> alphabeticalList = new List<string>();
@@ -69,7 +92,9 @@
                 Console.WriteLine(s);
             }
         }
-        //Arranging the contacts in the address book according to the pincode
+        /// <summary>
+        /// Arranges the contacts in the address book according to the pincode
+        /// </summary>
         public void SortByPincode()
         {
             People.Sort(new Comparison<Contact>((x, y) => string.Compare(x.ZipCode, y.ZipCode)));
@@ -78,8 +103,9 @@
                 Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.Address + "\t" + c.City + "\t" + c.State + "\t" + c.ZipCode + "\t" + c.PhoneNumber + "\t" + c.Email);
             }
         }
-        //Arranging the contacts in the address book according to the city name
-
+        /// <summary>
+        /// Arranges the contacts in the address book according to the city name
+        /// </summary>
         public void SortByCity()
         {
             People.Sort(new Comparison<Contact>((x, y) => string.Compare(x.City, y.City)));
@@ -87,10 +113,10 @@
             {
                 Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.Address + "\t" + c.City + "\t" + c.State + "\t" + c.ZipCode + "\t" + c.PhoneNumber + "\t" + c.Email);
             }
-
         }
-        //Arranging the contacts in the address book according to the state name
-
+        /// <summary>
+        /// Arranges the contacts in the address book according to the state name
+        /// </summary>
         public void SortByState()
         {
             People.Sort(new Comparison<Contact>((x, y) => string.Compare(x.State, y.State)));
@@ -98,7 +124,6 @@
             {
                 Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.Address + "\t" + c.City + "\t" + c.State + "\t" + c.ZipCode + "\t" + c.PhoneNumber + "\t" + c.Email);
             }
-
         }
     }
 }

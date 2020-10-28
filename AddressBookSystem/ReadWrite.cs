@@ -10,7 +10,9 @@
     using System.Text;
     class ReadWrite
     {
-        //Reading a txt file
+        /// <summary>
+        /// Reading a txt file
+        /// </summary>
         public static void ReadFromStreamReader()
         {
             string path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Utility\Contacts.txt";
@@ -29,7 +31,10 @@
                 Console.WriteLine("No file");
             }
         }
-        //Writing to a txt file
+        /// <summary>
+        /// Writing to a txt file
+        /// </summary>
+        /// <param name="data"></param>
         public static void WriteUsingStreamWriter(List<Contact> data)
         {
             string path = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Utility\Contacts.txt";
@@ -50,7 +55,9 @@
                 Console.WriteLine("No file");
             }
         }
-        //Read a CSV File
+        /// <summary>
+        /// Read a CSV File
+        /// </summary>
         public static void ReadCSVFile()
         {
             string filePath = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Utility\Contact.csv";
@@ -80,7 +87,10 @@
                 Console.WriteLine("File Doesn't Exist");
             }
         }
-        //Write to a CSV File
+        /// <summary>
+        /// Write to a CSV File
+        /// </summary>
+        /// <param name="data"></param>
         public static void WriteCSVFile(List<Contact> data)
         {
             string filePath = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Utility\Contact.csv";
@@ -98,7 +108,9 @@
                 Console.WriteLine("File Doesn't Exist");
             }
         }
-        //Read a JSON File
+        /// <summary>
+        /// Read a JSON File
+        /// </summary>
         public static void ReadJsonFile()
         {
             string filePath = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Utility\Contacts.json";
@@ -123,7 +135,10 @@
                 Console.WriteLine("File doesn't exists");
             }
         }
-        //Write to a JSON File
+        /// <summary>
+        /// Write to a JSON File
+        /// </summary>
+        /// <param name="data"></param>
         public static void WriteToJsonFile(List<Contact> data)
         {
             string filePath = @"C:\Users\Administrator\Desktop\BridgeLabz Practice\23. AddressBook\AddressBook\AddressBookSystem\Utility\Contacts.json";
